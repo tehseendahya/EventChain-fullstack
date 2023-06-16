@@ -6,63 +6,66 @@ const tokens = (n) => {
 
 async function main() {
   // Setup accounts & variables
+  //gets account
   const [deployer] = await ethers.getSigners()
-  const NAME = "TokenMaster"
-  const SYMBOL = "TM"
+  const NAME = "EventChain"
+  const SYMBOL = "EC"
 
   // Deploy contract
-  const TokenMaster = await ethers.getContractFactory("TokenMaster")
-  const tokenMaster = await TokenMaster.deploy(NAME, SYMBOL)
-  await tokenMaster.deployed()
+  const EventChain = await ethers.getContractFactory("EventChain")
+  const eventChain = await EventChain.deploy(NAME, SYMBOL)
+  //wait to be deployed
+  await eventChain.deployed()
 
-  console.log(`Deployed TokenMaster Contract at: ${tokenMaster.address}\n`)
+  console.log(`Deployed EventChain Contract at: ${eventChain.address}\n`)
 
   // List 6 events
   const occasions = [
     {
       name: "UFC Miami",
       cost: tokens(3),
-      tickets: 0,
+      tickets: 0,//sold out
       date: "May 31",
       time: "6:00PM EST",
       location: "Miami-Dade Arena - Miami, FL"
     },
     {
-      name: "ETH Tokyo",
+      name: "Collision Conference",
       cost: tokens(1),
-      tickets: 125,
-      date: "Jun 2",
-      time: "1:00PM JST",
-      location: "Tokyo, Japan"
+      tickets: 100,
+      date: "Jun 23",
+      time: "10:00AM EST",
+      location: "Toronto, Canada"
     },
     {
-      name: "ETH Privacy Hackathon",
+      name: "Toronto Maple Leafs vs Carolina Hurricanes",
       cost: tokens(0.25),
-      tickets: 200,
+      tickets: 100,
       date: "Jun 9",
-      time: "10:00AM TRT",
-      location: "Turkey, Istanbul"
+      time: "7:00PM EST",
+      location: "Raleigh, North Carolina"
     },
     {
-      name: "Dallas Mavericks vs. San Antonio Spurs",
+      name: "Young Africans FC vs. Simba FC",
       cost: tokens(5),
       tickets: 0,
       date: "Jun 11",
-      time: "2:30PM CST",
-      location: "American Airlines Center - Dallas, TX"
+      time: "2:30PM EAT",
+      location: "Benjamin Mkapa Stadium - Dar Es Salaam, Tanzania"
     },
     {
-      name: "ETH Global Toronto",
+      name: "Othello by William Shakespeare",
       cost: tokens(1.5),
       tickets: 125,
       date: "Jun 23",
-      time: "11:00AM EST",
-      location: "Toronto, Canada"
+      time: "9:00PM EST",
+      location: "Broadway Theatre - New York, New York"
     }
   ]
 
-  for (var i = 0; i < 5; i++) {
-    const transaction = await tokenMaster.connect(deployer).list(
+  //for loop to create them one by one
+  for (var i = 0; i < occasions.length; i++) {
+    const transaction = await eventChain.connect(deployer).list(
       occasions[i].name,
       occasions[i].cost,
       occasions[i].tickets,

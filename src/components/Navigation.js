@@ -10,14 +10,15 @@ const Navigation = ({ account, setAccount }) => {
   return (
     <nav>
       <div className='nav__brand'>
-        <h1>tokenmaster</h1>
+        <h1>EventChain</h1>
+        <img src="src/components/eventChainLogo.png" alt="logo"></img>
 
-        <input className='nav__search' type="text" placeholder='Find millions of experiences' />
+        <input className='nav__search' type="text" placeholder='Everything you could imagine...' />
 
         <ul className='nav__links'>
           <li><a href="/">Concerts</a></li>
           <li><a href="/">Sports</a></li>
-          <li><a href="/">Arts & Theater</a></li>
+          <li><a href="/">Theater</a></li>
           <li><a href="/">More</a></li>
         </ul>
       </div>

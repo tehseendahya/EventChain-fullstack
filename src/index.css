@@ -14,6 +14,9 @@
 
   --clr-dark-blue: #0237AB;
   --clr-light-blue: #125AC6;
+
+  --clr-dark-red: #c70039;
+  --clr-light-red: #ff5733;
 }
 
 body {
@@ -134,7 +137,8 @@ nav {
 /* -- HEADER -- */
 
 header {
-  background-image: linear-gradient(45deg, var(--clr-dark-blue) 10%, var(--clr-light-blue) 20%, var(--clr-dark-blue) 50%, var(--clr-light-blue) 120%);
+  background-image: linear-gradient(45deg, var(--clr-dark-red) 10%, var(--clr-light-red) 20%, var(--clr-dark-red) 50%, var(--clr-light-red) 120%);
+
   background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
@@ -179,6 +183,14 @@ header {
 
   cursor: pointer;
 }
+
+.custom-select {
+  width: 200px; /* Set the desired width */
+  height: 40px; /* Set the desired height */
+  border-width: 2px;
+  font-weight: bold;
+}
+
 
 .sort__select p {
   margin-left: 10px;
@@ -334,7 +346,7 @@ header {
 .occasion {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 68, 35, 0.7);
 
   position: fixed;
   top: 50%;
@@ -347,7 +359,7 @@ header {
   gap: 5px;
   grid-template-columns: repeat(25, 1fr);
 
-  background: linear-gradient(to bottom, var(--clr-light-blue), var(--clr-white) 75%);
+  background: linear-gradient(to bottom, var(--clr-light-red), var(--clr-white) 75%);
   border: 10px solid var(--clr-grey);
   border-radius: 8px;
 
@@ -444,7 +456,7 @@ header {
   justify-content: center;
   align-items: center;
 
-  background-color: var(--clr-dark-blue);
+  background-color: var(--clr-dark-red);
   color: var(--clr-white);
 
   width: 35px;
@@ -468,7 +480,7 @@ header {
 }
 
 .occasion__seats--taken {
-  background-color: rgba(34, 64, 109, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* ------------------------------------------------------ */

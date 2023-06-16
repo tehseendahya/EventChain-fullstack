@@ -6,22 +6,27 @@ import Seat from './Seat'
 // Import Assets
 import close from '../assets/close.svg'
 
-const SeatChart = ({ occasion, tokenMaster, provider, setToggle }) => {
+const SeatChart = ({ occasion, eventChain, provider, setToggle }) => {
   const [seatsTaken, setSeatsTaken] = useState(false)
   const [hasSold, setHasSold] = useState(false)
 
   const getSeatsTaken = async () => {
-    const seatsTaken = await tokenMaster.getSeatsTaken(occasion.id)
+    const seatsTaken = await eventChain.getSeatsTaken(occasion.id)
     setSeatsTaken(seatsTaken)
   }
 
+  //when you want to buy a seat
   const buyHandler = async (_seat) => {
+    //if seat has been purchased or not
     setHasSold(false)
-
+    //metamask account signs the transaction
     const signer = await provider.getSigner()
-    const transaction = await tokenMaster.connect(signer).mint(occasion.id, _seat, { value: occasion.cost })
+    //for minting
+    const transaction = await eventChain.connect(signer).mint(occasion.id, _seat, { value: occasion.cost })
+    //wait until it is done being signed
     await transaction.wait()
 
+    //after purchase, set it to true
     setHasSold(true)
   }
 
@@ -39,7 +44,7 @@ const SeatChart = ({ occasion, tokenMaster, provider, setToggle }) => {
         </button>
 
         <div className="occasion__stage">
-          <strong>STAGE</strong>
+          <strong>STAGE, FIELD, ARENA, COURT, etc</strong>
         </div>
 
         {seatsTaken && Array(25).fill(1).map((e, i) =>
